@@ -1,0 +1,22 @@
+django-admin startproject config
+cd config
+python -m venv venv
+source venv/bin/activate   # or venv\Scripts\activate (Windows)
+
+pip install django djangorestframework
+pip install djangorestframework-simplejwt
+pip install django-filter
+
+pip install drf-spectacular  // swagger
+
+python manage.py makemigrations accounts
+
+python manage.py makemigrations  // all migrations file create command
+
+
+
+Error:
+1. 401 Unauthorized
+{
+    "detail": "Authentication credentials were not provided."
+} // intha error varathukkala reason, Login panna thaan all apis access pannanmudium, namma inga default aa yella api kkum set pannittom, but login and register api call pannum pothe intha error varuthu, so itha correct aa solve pannanum.
