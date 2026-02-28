@@ -55,6 +55,14 @@ class CustomerSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         user = attrs.get("user")
-        if Customer.objects.filter(user=user, is_deleted=False).exists():
+
+        queryset = Customer.objects.filter(user=user, is_deleted=False)
+
+        # ✅ Exclude current instance during update
+        if self.instance:
+            queryset = queryset.exclude(pk=self.instance.pk)
+
+        if queryset.exists():
             raise serializers.ValidationError("Customer profile already exists.")
+
         return attrs

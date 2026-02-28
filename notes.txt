@@ -13,6 +13,14 @@ python manage.py makemigrations accounts
 
 python manage.py makemigrations  // all migrations file create command
 
+pip install dotenv
+
+pip install psycopg2
+
+python -m pip freeze > requirements.txt
+
+python -m pip install -r requirements.txt
+
 
 
 Error:
